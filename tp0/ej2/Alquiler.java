@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp1.ej2;
+package tp0.ej2;
 
-import tp1.ej2.Barco;
-import tp1.ej2.Cliente;
 import java.util.Date;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
+import tp1.ej9.ExcepcionDias;
 
 /**
  *
@@ -25,14 +22,24 @@ public class Alquiler {
     private Barco barco;
     private int valorFijo;
 
-    public Alquiler(Cliente c, String fi, String ff, int posAmarre, Barco b) throws Exception {
+    public Alquiler(Cliente c, String fi, String ff, int posAmarre, Barco b) throws Exception, ExcepcionDias {
         //para la fecha, se ingresa como String y se pasa a Date
-        cliente = c;
         fechaInicial = new SimpleDateFormat("dd/MM/yyyy").parse(fi);
         fechaFinal = new SimpleDateFormat("dd/MM/yyyy").parse(ff);
+        try{
+        Date diferenciaDias = new Date(fechaFinal.getTime() - fechaInicial.getTime());
+        int dias = DateToDays(diferenciaDias);
+        if (dias>5) {
+            throw new ExcepcionDias();
+        }
+        }catch(ExcepcionDias e){
+            System.err.println(e);
+        }
+        cliente = c;
         amarre = posAmarre;
         barco = b;
         valorFijo = 200;
+        
     }
 
     public void actualizarValor(int i) {
@@ -43,7 +50,7 @@ public class Alquiler {
         //creo una Date 
         Date diferenciaDias = new Date(fechaFinal.getTime() - fechaInicial.getTime());
         int dias = DateToDays(diferenciaDias);
-        return (10 * this.barco.getEslora() + valorFijo + this.barco.getModulo()+dias);
+        return (10 * this.barco.getEslora() + valorFijo + this.barco.getModulo() + dias);
     }
 
     public int DateToDays(Date fecha) {

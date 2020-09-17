@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp1.ej2;
-
+package tp0.ej2;
 
 /**
  *
@@ -15,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws Exception { //throws por lo de la clase Date
         Cliente cliente1 = new Cliente("Juan");
         Velero barcoVelero = new Velero("USB 123", 2, 2, 1);
-        Alquiler alq = new Alquiler(cliente1, "01/04/2022", "03/04/2022", 1, barcoVelero);
+        Alquiler alq = new Alquiler(cliente1, "01/02/2022", "03/04/2022", 1, barcoVelero);
         System.out.println(alq.calcularAlquiler());
     }
 

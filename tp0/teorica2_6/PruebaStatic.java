@@ -3,18 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp1.ej2;
+package tp0.teorica2_6;
 
 /**
  *
- * @author J0A
+ * @author joa
  */
-public class Cliente {
-     
-    private final String nombre;
-    
-    public Cliente(String n){
-        nombre=n;
+public class PruebaStatic {
+
+    public String aCadena() {
+        return "estoy en la superclase";
     }
-    
 }
