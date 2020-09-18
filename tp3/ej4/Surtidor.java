@@ -19,7 +19,7 @@ public class Surtidor {
     public synchronized void cargarNafta(Auto a) {
         System.out.println(Thread.currentThread().getName() + " está cargando");
         try {
-            //sleep para simular la carga
+            //sleep para simular la carga, de igual manera podría poner un for que "cargue el tanque"
             Thread.sleep(1000);
         } catch (InterruptedException e) {
         }
