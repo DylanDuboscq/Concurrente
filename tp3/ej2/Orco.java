@@ -9,17 +9,17 @@ package tp3.ej2;
  *
  * @author joa
  */
-public class Orco implements Runnable{
+public class Orco implements Runnable {
 
     private int danio;
     private Player pj;
 
-    public Orco(int valor,Player p) {
+    public Orco(int valor, Player p) {
         danio = valor;
-        pj=p;
+        pj = p;
     }
 
-    public void run(){
+    public void run() {
         pj.setVida(-danio);
     }
 }

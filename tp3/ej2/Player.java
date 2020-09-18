@@ -11,30 +11,25 @@ package tp3.ej2;
  */
 public class Player {
 
-    private Hp hp;
+    private int vida;
+    private int vidaMaxima;
 
-    public Player(Hp v) {
-        hp = v;
+    public Player(int v) {
+        vida = v;
     }
 
     public int getVida() {
-        return hp.getHp();
+        return vida;
     }
 
-    /*sin el synchronized, hay veces en las que el curandero primero intenta curarnos, y luego nos golpea el orco, dejandonos en 7 
-    de vida, sin embargo,gracias al synchronized, la vida permanece en 10
-     */
+    //sin el synchronized, la vida máxima no es un valor consistente
     public synchronized void setVida(int valor) {
-        if (hp.getHp() + valor < 1) {
-            hp.setHp(0);
+        if (vida + valor < 1) {
+            vida = 0;
             System.out.println("Te han matado");
         } else {
-            if (hp.getHp() + valor > hp.getVidaMaxima()) {
-                System.out.println("Estás full vida");
-            } else {
-                hp.setHp(hp.getHp() + valor);
-                System.out.println(Thread.currentThread().getName() + " hace " + valor + " de vida, ahora tu vida es: " + hp.getHp());
-            }
+            vida = vida + valor;
+            System.out.println(Thread.currentThread().getName() + " hace " + valor + " de vida, ahora tu vida es: " + vida);
         }
 
     }

@@ -9,18 +9,17 @@ package tp3.ej2;
  *
  * @author joa
  */
-public class Curandero implements Runnable{
+public class Curandero implements Runnable {
 
     private int curacion;
     private Player pj;
 
     public Curandero(int valor, Player p) {
         curacion = valor;
-        pj=p;
+        pj = p;
     }
 
-
-    public void run(){
+    public void run() {
         pj.setVida(curacion);
     }
 }

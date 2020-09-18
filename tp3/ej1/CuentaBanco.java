@@ -16,7 +16,7 @@ public class CuentaBanco {
     public CuentaBanco() {
     }
 
-    public synchronized int getBalance() {
+    public int getBalance() {
         return balance;
     }
 
@@ -35,7 +35,6 @@ public class CuentaBanco {
         }
     }
 
-    //si sólo sincronizo verificarCuenta, el método retiroBancario me queda "libre" y puede generar problemas
     private void retiroBancario(int retiro) {
         balance = balance - retiro;
     }
