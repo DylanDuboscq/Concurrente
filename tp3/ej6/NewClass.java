@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp0.teorica2_6;
+package tp3.ej6;
 
 /**
  *
  * @author joa
  */
-public class PruebaStatic {
-
-    public String aCadena() {
-        return "estoy en la superclase";
-    }
+public class NewClass {
+    
 }
