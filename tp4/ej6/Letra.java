@@ -5,7 +5,6 @@
  */
 package tp4.ej6;
 
-
 /**
  *
  * @author joa
@@ -17,11 +16,11 @@ public class Letra implements Runnable {
     private Turno turno;
     private int numeroTurno;
 
-    public Letra(int i, char l,Turno t) {
-        cantRepeticiones = i+1;
+    public Letra(int i, char l, Turno t) {
+        cantRepeticiones = i + 1;
         letra = l;
-        turno=t;
-        numeroTurno=i;
+        turno = t;
+        numeroTurno = i;
     }
 
     public void imprimir() {

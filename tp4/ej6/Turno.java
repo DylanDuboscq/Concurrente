@@ -18,11 +18,11 @@ public class Turno {
     private Semaphore sems[];
 
     public Turno(int cantidadLetras) {
-        sems=new Semaphore[cantidadLetras];
-        
-        sems[0] =new Semaphore(1);
-        for(int i=1;i<3;i++){
-        sems[i]=new Semaphore(0);
+        sems = new Semaphore[cantidadLetras];
+
+        sems[0] = new Semaphore(1);
+        for (int i = 1; i < 3; i++) {
+            sems[i] = new Semaphore(0);
         }
     }
 
@@ -35,6 +35,6 @@ public class Turno {
     }
 
     public void completarTurno(int i) {
-        sems[(i+1)%sems.length].release();
+        sems[(i + 1) % sems.length].release();
     }
 }
