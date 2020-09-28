@@ -22,37 +22,32 @@ public class Taxi {
         semTaxista = t;
         semPasajero = p;
     }
+    
+    public void subirPasajero(Semaphore p){
+        semPasajero=p;
+    }
 
     public void encontrarTaxi() {
         try {
             semPasajero.acquire();
         } catch (InterruptedException ex) {
             Logger.getLogger(Taxi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("Estoy buscando un taxi");
-        esperar();
-        System.out.println("Encontré uno!");
+        }        
         semTaxista.release();
     }
 
-    public void conducir() {
+    public void comenzarRecorrido() {
         try {
             semTaxista.acquire();
         } catch (InterruptedException ex) {
             Logger.getLogger(Taxi.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Buen día pasajero, comencemos el viaje");
-        esperar();
-        System.out.println("Llegamos! ahora me duermo un rato");
-        semPasajero.release();
+    }
+    
+    public void llegadaADestino(){
+                semPasajero.release();
     }
 
-    public void esperar() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Taxi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
 
 }

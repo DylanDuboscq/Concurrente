@@ -13,18 +13,25 @@ import java.util.logging.Logger;
  * @author joa
  */
 public class Pasajero implements Runnable {
-    
+
     private Taxi taxi;
-    
-    public Pasajero(Taxi t){
-        taxi=t;
+
+    public Pasajero(Taxi t) {
+        taxi = t;
     }
 
-
-   
-    public void run(){
-        while(true){
-        taxi.encontrarTaxi();
+    private void buscarTaxi() {
+        System.out.println(Thread.currentThread().getName()+" dice: Estoy buscando un taxi");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Taxi.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void run() {
+        buscarTaxi();
+        taxi.encontrarTaxi();
+        System.out.println(Thread.currentThread().getName()+ " dice: Encontré uno!");
     }
 }
