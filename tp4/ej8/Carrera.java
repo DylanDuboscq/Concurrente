@@ -4,7 +4,7 @@ import java.util.concurrent.Semaphore;
 
 public class Carrera {
     
-    private Semaphore testigo = new Semaphore(1);
+    private Semaphore testigo = new Semaphore(1);   
     
     public void correr(String nombreCorredor) throws InterruptedException{
         testigo.acquire();

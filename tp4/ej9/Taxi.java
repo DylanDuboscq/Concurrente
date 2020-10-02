@@ -47,7 +47,4 @@ public class Taxi {
     public void llegadaADestino(){
                 semPasajero.release();
     }
-
-
-
 }
