@@ -12,16 +12,16 @@ public class Taxi {
         cabina = new Semaphore(0);
     }
     
-    public void esperarCliente(String nombreTaxista) throws InterruptedException{
+    public void esperarCliente(String nombreTaxista) throws InterruptedException {
         pasajero.acquire();
-        System.out.println(nombreTaxista + " con cliente a bordo y manejando.");
-        Thread.sleep((long) (Math.random()*1000));
+    }
+
+    public void terminarViaje() {
         cabina.release();
     }
-    
-    public void buscarTaxi(String nombrePasajero)throws InterruptedException{
+
+    public void buscarTaxi(String nombrePasajero) throws InterruptedException {
         pasajero.release();
         cabina.acquire();
-        System.out.println(nombrePasajero + " terminó su viaje en taxi.");
     }
 }

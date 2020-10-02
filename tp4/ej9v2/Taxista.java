@@ -17,7 +17,11 @@ public class Taxista implements Runnable {
         try {
             while (true) {
                 taxi.esperarCliente(nombre);
-            }
+                System.out.println(nombre + " con cliente a bordo y manejando.");
+                Thread.sleep((long) (Math.random() * 1000));
+                System.out.println("un viaje terminado");
+                taxi.terminarViaje();
+                Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Taxista.class.getName()).log(Level.SEVERE, null, ex);
         }

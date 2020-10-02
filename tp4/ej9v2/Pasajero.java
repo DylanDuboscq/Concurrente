@@ -14,6 +14,7 @@ public class Pasajero implements Runnable{
         try {
             while (true) {
                 taxi.buscarTaxi(nombre);
+                System.out.println(nombre+" terminó su viaje");
             }
         } catch (InterruptedException ex) {};
     }
