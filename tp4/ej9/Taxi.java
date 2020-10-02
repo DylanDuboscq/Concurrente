@@ -22,14 +22,11 @@ public class Taxi {
         semTaxista = t;
         semPasajero = p;
     }
-    
-    public void subirPasajero(Semaphore p){
-        semPasajero=p;
-    }
 
     public void encontrarTaxi() {
         try {
             semPasajero.acquire();
+        System.out.println(Thread.currentThread().getName()+ " dice: Encontré uno!");
         } catch (InterruptedException ex) {
             Logger.getLogger(Taxi.class.getName()).log(Level.SEVERE, null, ex);
         }        

@@ -32,6 +32,5 @@ public class Pasajero implements Runnable {
     public void run() {
         buscarTaxi();
         taxi.encontrarTaxi();
-        System.out.println(Thread.currentThread().getName()+ " dice: Encontré uno!");
     }
 }
