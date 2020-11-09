@@ -29,7 +29,6 @@ public class Saludo {
     }
     
     public synchronized void saludoEmpleado(String nombre){
-        System.out.println(nombre+": Buenos días jefe!");
         llegaron++;
         this.notifyAll();
         while(!jefeSaludo){
@@ -39,5 +38,6 @@ public class Saludo {
                 Logger.getLogger(Saludo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println(nombre+": Buenos días jefe!");
     }
 }
