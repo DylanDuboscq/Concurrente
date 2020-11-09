@@ -32,7 +32,7 @@ public class Libro {
     
     public synchronized void escribir(){
         escritores++;
-        while(lectores > 0){
+        while(lectores > 0 && escritores > 0){
             try {
                 this.wait();
             } catch (InterruptedException ex) {
