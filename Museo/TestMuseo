@@ -1,0 +1,21 @@
+package Museo;
+
+public class TestMuseo {
+
+    public static void main(String[] args) {
+        
+        Museo elMuseo = new Museo(50,30,35);
+        Thread[] hilos = new Thread[100];
+        Thread hiloTemperatura = new Thread(new Temperatura(elMuseo));
+        for (int i = 0; i < 10; i++) {
+            hilos[i] = new Thread(new Persona(elMuseo,true));
+        }
+        for (int i = 10; i < 100; i++) {
+            hilos[i] = new Thread(new Persona(elMuseo, false));
+        }
+        hiloTemperatura.start();
+        for (int i = 0; i < 100; i++) {
+            hilos[i].start();
+        }
+    }
+}
