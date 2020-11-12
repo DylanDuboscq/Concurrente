@@ -16,14 +16,16 @@ public class Main {
 //        int cantidadJubilados = 10;
 //        int umbralTemperatura = 30;
 //        int capacidad=50;
+//        int capacidadConTemperaturaAlta=35;
         
 //utilicé estos valores para facilitar el testeo
         int cantidadPersonas = 10;
         int cantidadJubilados = 3;
         int umbralTemperatura = 30;
         int capacidad=3;
+        int capacidadConTemperaturaAlta=1;
 
-        GestorSala sala = new GestorSala(umbralTemperatura, capacidad);
+        GestorSala sala = new GestorSala(umbralTemperatura, capacidad, capacidadConTemperaturaAlta);
         Medidor medidor = new Medidor(sala);
         Thread[] t = new Thread[cantidadPersonas];
         Thread tMedidor = new Thread(medidor);

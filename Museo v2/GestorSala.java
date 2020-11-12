@@ -16,13 +16,15 @@ public class GestorSala {
 
     private final int umbralTemp;
     private final int capacidadPersonas;
+    private final int capacidadConTempAlta;
     private int temperatura;
     private int personasAdentro;
     private int jubiladosEsperando;
 
-    public GestorSala(int t, int c) {
-        umbralTemp = t;
-        capacidadPersonas = c;
+    public GestorSala(int umbral, int cap,int capTemp) {
+        umbralTemp = umbral;
+        capacidadPersonas = cap;
+        capacidadConTempAlta=capTemp;
         personasAdentro = 0;
         temperatura = 20;
     }
@@ -39,6 +41,8 @@ public class GestorSala {
     }
 
     public synchronized void entrarSalaJubilado() {
+        System.out.println(Thread.currentThread().getName() + " en espera");
+        jubiladosEsperando++;
         while (esperar()) {
             try {
                 this.wait();
@@ -52,22 +56,23 @@ public class GestorSala {
 
     public synchronized void sumarPersonas() {
         personasAdentro++;
-        System.out.println(Thread.currentThread().getName() + " ingresa. Ahora hay " + personasAdentro);
+        System.out.println("--------------------------------------" + Thread.currentThread().getName() + " ingresa. Ahora hay " + personasAdentro);
         this.notifyAll();
     }
 
     public synchronized boolean esperar() {
-        return (temperatura > umbralTemp || personasAdentro == capacidadPersonas);
+        return (personasAdentro == capacidadPersonas || (temperatura > umbralTemp && personasAdentro>=capacidadConTempAlta));
     }
 
     public synchronized void salirSala() {
+        System.out.println(Thread.currentThread().getName() + " se retira");
         personasAdentro--;
         this.notifyAll();
     }
 
     public synchronized void notificarTemperatura(int t) {
         temperatura = t;
-        System.out.println("----- Temperatura actual: " + temperatura + "°C");
+        System.out.println("----- Temperatura actual: " + temperatura + "°C -----");
         this.notifyAll();
     }
 }

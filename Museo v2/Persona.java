@@ -35,7 +35,6 @@ public class Persona implements Runnable{
     public void run(){
         solicitarEntrada();
         mirar();
-        System.out.println(Thread.currentThread().getName()+": Me retiro");
         sala.salirSala();
     }
 }
