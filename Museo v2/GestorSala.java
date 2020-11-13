@@ -75,4 +75,8 @@ public class GestorSala {
         System.out.println("----- Temperatura actual: " + temperatura + "°C -----");
         this.notifyAll();
     }
+    
+    public synchronized int getPersonas(){
+        return personasAdentro;
+    }
 }

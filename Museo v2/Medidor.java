@@ -32,7 +32,8 @@ public class Medidor implements Runnable{
     public int calcularTemperatura(){
         int t;
         Random r=new Random();
-        t=20+r.nextInt(20);
+        //t=15+r.nextInt(10)+(sala.getPersonas()/2);       //la t ambiente varía entre 15 y 25, y cada persona aumenta la temperatura en 0,5
+        t=20+r.nextInt(20)+(sala.getPersonas()/2);      //para fines de testeo    
         return t;
     }
     
