@@ -1,0 +1,26 @@
+package Museo;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Jubilado extends Persona{
+    
+    private Museo miMuseo;
+    
+    public Jubilado(Museo m) {
+        super(m);
+    }
+    
+    public void run() {
+        while (true) {
+            try {
+                miMuseo.entrarMuseoJubilado();
+                Thread.sleep(3000);
+                miMuseo.salir();
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+}

@@ -27,16 +27,27 @@ public class Museo {
         this.notifyAll();
     }
 
-    public synchronized void entrarMuseo(boolean jubilado) {
-        while (jubiladoEsperando > 0 && !jubilado) {
+    public synchronized void entrarMuseoJubilado() {
+        jubiladoEsperando++;
+        while ((genteAdentro == capacidad) || ((genteAdentro >= capTempAlta) && (temperatura >= umbral))) {
             try {
                 this.wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Museo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (jubilado) {
-            jubiladoEsperando++;
+        jubiladoEsperando--;
+        System.out.println("Entró jubilado.");
+        genteAdentro++;
+    }
+
+    public synchronized void entrarMuseo() {
+        while (jubiladoEsperando > 0) {
+            try {
+                this.wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Museo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         while ((genteAdentro == capacidad) || ((genteAdentro >= capTempAlta) && (temperatura >= umbral))) {
             try {
@@ -45,16 +56,9 @@ public class Museo {
                 Logger.getLogger(Museo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (jubilado) {
-            jubiladoEsperando--;
-            System.out.println("Entró jubilado.");
-            genteAdentro++;
-            this.notifyAll();
-        } else {
-            System.out.println("Entró persona");
-            genteAdentro++;
-            this.notifyAll();
-        }
+        System.out.println("Entró persona");
+        genteAdentro++;
+        System.out.println("Gente adentro: "+genteAdentro);
     }
 
     public synchronized void salir() {
